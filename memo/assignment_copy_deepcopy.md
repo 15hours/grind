@@ -1,4 +1,4 @@
-#### Assignment:
+### Assignment:
 ```python
 colors = ['red', 'blue', 'green']
 b = colors
@@ -12,8 +12,8 @@ b = colors
 >> ['red', 'blue', 'green', 'white']
 ```
 
-#### Shallow copy:
-##### For simple objects:
+### Shallow copy:
+###### For simple objects:
 ```python
 a = [[1, 2], [2, 4]]
 b = a[:] ## shallow copy
@@ -26,7 +26,7 @@ b = a[:] ## shallow copy
 >> a
 >> [[1, 2], [2, 4]]
 ```
-##### For compund objects:
+###### For compund objects:
 ```python
 a = [[1, 2], [2, 4]]
 b = a[:] #shallow copy
@@ -39,7 +39,7 @@ b = a[:] #shallow copy
 >> [[1, 2, 3], [2, 4]]
 ```
 
-#### Deep copy:
+### Deep copy:
 ```python
 a = [[1, 2], [2, 4]]
 
