@@ -1,4 +1,4 @@
-'''
+"""
 #bfs, #dfs, #dp, #dag,  #backtracking, paths from node 0 to node n-1
 
 Given a directed acyclic graph (DAG) of n nodes labeled from 0 to n - 1, 
@@ -15,13 +15,12 @@ Explanation: There are two paths: 0 -> 1 -> 3 and 0 -> 2 -> 3.
 
 Input: graph = [[4,3,1],[3,2,4],[3],[4],[]]
 Output: [[0,4],[0,3,4],[0,1,3,4],[0,1,2,3,4],[0,1,4]]
-'''
+"""
 import collections
 from functools import lru_cache
 
 
 class Solution:
-
     def bfs_approach(self, graph: list[list[int]]) -> list[list[int]]:
         print("[BFS]")
         queue = collections.deque()
@@ -33,7 +32,7 @@ class Solution:
         queue.append(start_path)
 
         while queue:
-            cur_path, cur_node = queue.popleft()    
+            cur_path, cur_node = queue.popleft()
 
             for next_node in graph[cur_node]:
                 new_path = cur_path[:]
@@ -45,7 +44,7 @@ class Solution:
                     queue.append([new_path, next_node])
 
         return all_paths
-    
+
     def dfs_approach(self, graph: list[list[int]]) -> list[list[int]]:
         print("[DFS]")
         all_paths = []
@@ -65,24 +64,24 @@ class Solution:
         start_path = collections.deque()
         start_path.append(start_node)
         dfs(start_node, start_path)
-        
+
         return all_paths
 
     def dp_approach(self, graph: list[list[int]]) -> list[list[int]]:
         print("[DP]")
         target = len(graph) - 1
 
-        @lru_cache(maxsize = None)
+        @lru_cache(maxsize=None)
         def dp(cur_node: int) -> list[list[int]]:
             if cur_node == target:
                 return [[target]]
-            
+
             result_path = []
             for next_node in graph[cur_node]:
                 for path in dp(next_node):
                     result_path.append([cur_node] + path)
 
             return result_path
-        
+
         start_node = 0
         return dp(start_node)
