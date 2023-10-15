@@ -52,7 +52,8 @@ class Solution:
                           edges: list[list[int]],
                           succ_prob: list[float],
                           start_node: int,
-                          end_node: int) -> float:
+                          end_node: int
+                          ) -> float:
         print("[Dijkstra]")
         print("space complexity: O(E+V)")
         print("time complexity: O(V+E*logV)")
@@ -87,7 +88,8 @@ class Solution:
                                     edges: list[list[int]],
                                     succ_prob: list[float],
                                     start_node: int,
-                                    end_node: int) -> float:
+                                    end_node: int
+                                    ) -> float:
         print("[BF with 2 arrays]")
         print("space complexity: O(V)")
         print("time complexity: O(V*(E+V))")
@@ -123,7 +125,8 @@ class Solution:
                                    edges: list[list[int]],
                                    succ_prob: list[float],
                                    start_node: int,
-                                   end_node: int) -> float:
+                                   end_node: int
+                                   ) -> float:
         print("[BF with one array]")
         print("space complexity: O(V)")
         print("time complexity: O(V*E)")
@@ -158,7 +161,8 @@ class Solution:
                       edges: list[list[int]],
                       succ_prob: list[float],
                       start_node: int,
-                      end_node: int) -> float:
+                      end_node: int
+                      ) -> float:
         print("[SPFA]")
         print("space complexity: O(E+V)")
         print("time complexity: O(V*E)")
