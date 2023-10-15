@@ -87,17 +87,17 @@ class Solution:
         answer = shortest_distance[k + 1][dst]
         return answer if answer != math.inf else -1
 
-    def basic_bf_approach(self,
-                            n: int,
-                            flights: list[list[int]],
-                            src: int,
-                            dst: int,
-                            k: int
-                            ) -> int:
-        print("[Basic BF]")
+    def bf_with_two_arrays(self,
+                           n: int,
+                           flights: list[list[int]],
+                           src: int,
+                           dst: int,
+                           k: int
+                           ) -> int:
+        print("[BF with two arrays]")
                 
-        prev_state = [math.inf for _ in range(n)]
-        cur_state = [math.inf for _ in range(n)]
+        prev_state = [math.inf] * n
+        cur_state = [math.inf] * n
         prev_state[src] = 0
         
         for _ in range(1, k + 2):
@@ -135,7 +135,7 @@ class Solution:
         queue = collections.deque()
         start_steps, start_cost = 0, 0
         queue.append([src, start_steps, start_cost])
-        dists = [math.inf for _ in range(n)]
+        dists = [math.inf] * n
         dists[src] = 0
 
         while queue:
@@ -166,13 +166,13 @@ class Solution:
                             dst: int,
                             k: int
                             ) -> int:
-        print("[Dijkstra's approach]")
+        print("[Dijkstra]")
 
         adj_list = collections.defaultdict(list)
         for parent, node, cost in flights:
             adj_list[parent].append([node, cost])
             
-        stops = [math.inf for _ in range(n)]
+        stops = [math.inf] * n
         pq = []
         start_cost, start_steps = 0, 0
         heapq.heappush(pq, [start_cost, src, start_steps])
