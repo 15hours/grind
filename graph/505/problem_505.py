@@ -113,4 +113,50 @@ class Solution:
         i, j = destination
         return dists[i][j] if dists[i][j] != math.inf else -1
 
-#TODO: implement dijkstra algorithm
+    def dijkstra_approach(self,
+                          maze: list[list[int]],
+                          start: list[int],
+                          destination: list[int]
+                          ) -> int:
+        print("[Dijkstra]")
+        print("space complexity: O(m*n)")
+        print("time complexity: O(m*n*log(m*n)")
+        
+        num_rows = len(maze)
+        num_cols = len(maze[0])
+        dists = [[math.inf for _ in range(num_cols)] for _ in range(num_rows)]
+        dists[start[0]][start[1]] = 0
+        
+        pq = []
+        heapq.heappush(pq, [0, start])
+
+        while pq:
+            cur_cost, cur_node = heapq.heappop(pq)
+            i, j = cur_node
+            if cur_node == destination:
+                return cur_cost
+
+            for dir in [(-1, 0), (0, -1), (1, 0), (0, 1)]:
+                tmp_i, tmp_j = i + dir[0], j + dir[1]
+
+                steps = 0
+                while 0 <= tmp_i < num_rows and \
+                        0 <= tmp_j < num_cols and \
+                        maze[tmp_i][tmp_j] == 0:
+                    tmp_i += dir[0]
+                    tmp_j += dir[1]
+                    steps += 1
+
+                if steps == 0:
+                    continue
+
+                next_i = tmp_i - dir[0]
+                next_j = tmp_j - dir[1]
+
+                new_cost = cur_cost + steps
+                if new_cost < dists[next_i][next_j]:
+                    dists[next_i][next_j] = new_cost
+                    heapq.heappush(pq, [new_cost, [next_i, next_j]])
+                    
+        i, j = destination
+        return dists[i][j] if dists[i][j] != math.inf else -1

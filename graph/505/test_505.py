@@ -10,6 +10,7 @@ def solution(pytestconfig):
     method_solution_map = {
         "dfs": sol.dfs_approach,
         "bfs": sol.bfs_approach,
+        "dijkstra": sol.dijkstra_approach,
     }
     return method_solution_map[method]
 
