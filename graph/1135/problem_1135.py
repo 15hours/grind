@@ -37,7 +37,7 @@ import heapq
 class UnionFind:
     def __init__(self, n: int) -> None:
         self.root = list(range(n))
-        self.rank = [0] * n
+        self.rank = [1] * n
 
     def find(self, node: int) -> int:
         if node == self.root[node]:
@@ -53,11 +53,12 @@ class UnionFind:
             return False
 
         if self.rank[root_node_1] <= self.rank[root_node_2]:
-            self.root[root_node_2] = root_node_1
-            self.rank[root_node_1] += self.rank[root_node_2]
-        else:
             self.root[root_node_1] = root_node_2
             self.rank[root_node_2] += self.rank[root_node_1]
+        else:
+            self.root[root_node_2] = root_node_1
+            self.rank[root_node_1] += self.rank[root_node_2]
+
         return True
 
         
