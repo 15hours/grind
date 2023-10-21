@@ -90,7 +90,7 @@ class Solution:
     def prim_approach(self, n: int, connections: list[list[int]]) -> int:
         print("[Prim]")
         print("space complexity: O(V)")
-        print("time complexity: O(E*logV)")
+        print("time complexity: O(E*logE)")
         
         if len(connections) < n - 1:
             return -1
