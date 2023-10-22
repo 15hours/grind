@@ -10,6 +10,7 @@ def solution(pytestconfig):
     method_solution_map = {
         "kruskal": sol.kruskal_approach,
         "prim": sol.prim_approach,
+        "opt_prim": sol.opt_prim_approach,
     }
     return method_solution_map[method]
 
