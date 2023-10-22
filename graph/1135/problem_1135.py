@@ -1,4 +1,6 @@
 '''
+#mst, #kruskal, #prim
+
 There are n cities labeled from 1 to n. You are given the integer n and
 an array connections where connections[i] = [xi, yi, costi] indicates
 that the cost of connecting city xi and city yi (bidirectional
@@ -52,12 +54,13 @@ class UnionFind:
         if root_node_1 == root_node_2:
             return False
 
-        if self.rank[root_node_1] <= self.rank[root_node_2]:
+        if self.rank[root_node_1] < self.rank[root_node_2]:
             self.root[root_node_1] = root_node_2
-            self.rank[root_node_2] += self.rank[root_node_1]
+        elif self.rank[root_node_2] < self.rank[root_node_1]:
+            self.root[root_node_2] = root_node_1
         else:
             self.root[root_node_2] = root_node_1
-            self.rank[root_node_1] += self.rank[root_node_2]
+            self.rank[root_node_1] += 1
 
         return True
 
@@ -75,15 +78,15 @@ class Solution:
         sorted_connections = sorted(connections, key=lambda x: x[2])
         uf = UnionFind(n + 1)
         
-        connected_nodes_count = 0
-        cost = 0
+        used_edges = 0
+        mst_cost = 0
         for node_1, node_2, weight in sorted_connections:
             if uf.union(node_1, node_2):
-                connected_nodes_count += 1
-                cost += weight
+                used_edges += 1
+                mst_cost += weight
             
-            if connected_nodes_count == n - 1:
-                return cost
+            if used_edges == n - 1:
+                return mst_cost
         
         return -1
     
@@ -102,29 +105,29 @@ class Solution:
 
         vis = []
         pq = []
-        cost = 0
-        checked = [False] * (n + 1)
+        mst_cost = 0
+        in_mst = [False] * (n + 1)
 
         vis.append(n)
-        checked[n] = True
+        in_mst[n] = True
 
         for _ in range(n - 1):
             cur_node = vis[-1]
             if not adj_list[cur_node]:
                 return -1
             for next_node, weight in adj_list[cur_node]:
-                if checked[next_node]:
+                if in_mst[next_node]:
                     continue
                 heapq.heappush(pq, [weight, next_node])
             
             while pq:
                 weight, chosen_node = heapq.heappop(pq)
-                if not checked[chosen_node]:
-                    cost += weight
+                if not in_mst[chosen_node]:
+                    mst_cost += weight
                     vis.append(chosen_node)
-                    checked[chosen_node] = True
+                    in_mst[chosen_node] = True
                     break
             else:
                 return -1
 
-        return cost
+        return mst_cost
