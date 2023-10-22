@@ -9,7 +9,7 @@ def solution(pytestconfig):
     sol = Solution()
     method_solution_map = {
         "dp": sol.dp_approach,
-        "bf": sol.basic_bf_approach,
+        "bellman-ford": sol.bellman_ford_approach,
         "bfs": sol.bfs_approach,
         "dijkstra": sol.dijkstra_approach,
     }
@@ -48,7 +48,8 @@ def test_3(solution):
 
 def test_4(solution):
     num_cities = 5
-    flights = [[0,1,5],[1,2,5],[0,3,2],[3,1,2],[1,4,1],[4,2,1]]
+    flights = [[0, 1, 5], [1, 2, 5], [0, 3, 2],
+               [3, 1, 2], [1, 4, 1], [4, 2, 1]]
     src = 0
     dst = 2
     stops = 2

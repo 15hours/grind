@@ -1,5 +1,5 @@
 '''
-#dp, #bf, #bfs, #dijkstra
+#dp, #bellman-ford, #bfs, #dijkstra
 
 There are n cities connected by some number of flights. You are given an
 array flights where flights[i] = [fromi, toi, pricei] indicates that
@@ -87,14 +87,14 @@ class Solution:
         answer = shortest_distance[k + 1][dst]
         return answer if answer != math.inf else -1
 
-    def bf_with_two_arrays(self,
-                           n: int,
-                           flights: list[list[int]],
-                           src: int,
-                           dst: int,
-                           k: int
-                           ) -> int:
-        print("[BF with two arrays]")
+    def bellman_ford_approach(self,
+                              n: int,
+                              flights: list[list[int]],
+                              src: int,
+                              dst: int,
+                              k: int
+                              ) -> int:
+        print("[Bellman-Ford's algorithm]")
 
         prev_state = [math.inf] * n
         cur_state = [math.inf] * n

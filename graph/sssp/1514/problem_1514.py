@@ -1,5 +1,5 @@
 '''
-#dijkstra, #bf, #spfa
+#dijkstra, #bellman-ford, #spfa
 
 You are given an undirected weighted graph of n nodes (0-indexed),
 represented by an edge list where edges[i] = [a, b] is an undirected
@@ -83,14 +83,14 @@ class Solution:
 
         return 0
 
-    def bf_with_two_arrays_approach(self,
-                                    n: int,
-                                    edges: list[list[int]],
-                                    succ_prob: list[float],
-                                    start_node: int,
-                                    end_node: int
-                                    ) -> float:
-        print("[BF with 2 arrays]")
+    def bellman_ford_2_approach(self,
+                                n: int,
+                                edges: list[list[int]],
+                                succ_prob: list[float],
+                                start_node: int,
+                                end_node: int
+                                ) -> float:
+        print("[Bellman-Ford's algorithm with two arrays]")
         print("space complexity: O(V)")
         print("time complexity: O(V*(E+V))")
 
@@ -120,14 +120,14 @@ class Solution:
 
         return cur_state[end_node]
 
-    def bf_with_one_array_approach(self,
-                                   n: int,
-                                   edges: list[list[int]],
-                                   succ_prob: list[float],
-                                   start_node: int,
-                                   end_node: int
-                                   ) -> float:
-        print("[BF with one array]")
+    def bellman_ford_1_approach(self,
+                                n: int,
+                                edges: list[list[int]],
+                                succ_prob: list[float],
+                                start_node: int,
+                                end_node: int
+                                ) -> float:
+        print("[Bellman-Ford's algorithm with one array]")
         print("space complexity: O(V)")
         print("time complexity: O(V*E)")
 
