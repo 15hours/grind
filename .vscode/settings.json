@@ -16,7 +16,7 @@
             "name": "FirstConnection",
             "database": "based",
             "username": "db_user",
-            "password": "db_key"
+            "askForPassword": true
         }
     ]
 }
