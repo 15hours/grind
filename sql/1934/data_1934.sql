@@ -38,4 +38,4 @@ select *
 
 select *
   from Confirmations
-;
+

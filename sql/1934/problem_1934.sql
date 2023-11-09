@@ -1,8 +1,8 @@
 /*
-The confirmation rate of a user is the number of 'confirmed' messages
-divided by the total number of requested confirmation messages. The
-confirmation rate of a user that did not request any confirmation
-messages is 0. Round the confirmation rate to two decimal places.
+The confirmation rate of a user is the number of 'confirmed' messages divided
+by the total number of requested confirmation messages. The confirmation rate
+of a user that did not request any confirmation messages is 0. Round the
+confirmation rate to two decimal places.
 
 Write a solution to find the confirmation rate of each user.
 
@@ -45,35 +45,20 @@ Output:
 | 2       | 0.50              |
 +---------+-------------------+
 Explanation: 
-User 6 did not request any confirmation messages. The confirmation rate
-is 0.
+User 6 did not request any confirmation messages. The confirmation rate is 0.
 User 3 made 2 requests and both timed out. The confirmation rate is 0.
-User 7 made 3 requests and all were confirmed. The confirmation rate is
-1.
+User 7 made 3 requests and all were confirmed. The confirmation rate is 1.
 User 2 made 2 requests where one was confirmed and the other timed out.
 The confirmation rate is 1 / 2 = 0.5.
 */
 
 
-select cnf.user_id as user_id
-     , count(cnf.action) as total_action
-  from Confirmations as cnf
- group by cnf.user_id
+select s.user_id as user_id
+     , round(avg(if(c.action = 'confirmed', 1, 0)), 2) as confirmation_rate
+  from Signups as s
+  left join Confirmations as c
+    on s.user_id = c.user_id
+ group by s.user_id
 ;
 
-select user_id
-     , sum(case when action = 'confirmed'
-                then 1 
-                else 0 end) as confirmed_action
-  from Confirmations
- group by user_id
-;
-
-select cnf.user_id as user_id
-     , round(sum(case when action = 'confirmed'
-                      then 1 
-                      else 0 end) / count(cnf.action), 2) as total_action
-  from Confirmations as cnf
- group by cnf.user_id
-;
 

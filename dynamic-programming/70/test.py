@@ -1,10 +1,10 @@
 import pytest
 
-from problem_70 import Solution
+from solution import Solution
 
 
 @pytest.fixture
-def solution(pytestconfig):
+def solution_res(pytestconfig):
     method = pytestconfig.getoption("--name")
     sol = Solution()
     method_solution_map = {
@@ -16,17 +16,17 @@ def solution(pytestconfig):
     return method_solution_map[method]
 
 
-def test_1(solution):
-    assert solution(2) == 2
+def test_1(solution_res):
+    assert solution_res(2) == 2
 
 
-def test_2(solution):
-    assert solution(3) == 3
+def test_2(solution_res):
+    assert solution_res(3) == 3
 
 
-def test_3(solution):
-    assert solution(5) == 8
+def test_3(solution_res):
+    assert solution_res(5) == 8
 
 
-def test_4(solution):
-    assert solution(45) == 1836311903
+def test_4(solution_res):
+    assert solution_res(45) == 1836311903
