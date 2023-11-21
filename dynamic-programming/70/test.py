@@ -8,10 +8,10 @@ def solution_res(pytestconfig):
     method = pytestconfig.getoption("--name")
     sol = Solution()
     method_solution_map = {
-        "bf": sol.bf_approach,
-        "dp_td": sol.dp_top_down_approach,
-        "dp_bu": sol.dp_bottom_up_approach,
-        "fib_num": sol.fibbonaci_number_approach,
+        "brute_force": sol.bf_approach,
+        "memoization": sol.dp_top_down_approach,
+        "tabulation": sol.dp_bottom_up_approach,
+        "const_space": sol.dp_bottom_up_const_approach,
     }
     return method_solution_map[method]
 

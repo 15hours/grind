@@ -5,35 +5,35 @@ class Solution:
         print("space complexity: O(n)")
         print("time complexity: O(2^n)")
 
-        def recursion(x: int) -> int:
-            if x > n:
+        def dfs(i: int) -> int:
+            if i > n:
                 return 0
-            if x == n:
+            if i == n:
                 return 1
-            return recursion(x + 1) + recursion(x + 2)
+            return dfs(i + 1) + dfs(i + 2)
 
-        return recursion(0)
+        return dfs(0)
 
     def dp_top_down_approach(self, n: int) -> int:
         print("[DP top down]")
         print("space complexity: O(n)")
         print("time complexity: O(n)")
 
-        memo = [0] * n
+        dp = [0] * n
 
-        def recursion(x: int) -> int:
-            if x > n:
+        def dfs(i: int) -> int:
+            if i > n:
                 return 0
-            if x == n:
+            if i == n:
                 return 1
-            if memo[x] > 0:
-                return memo[x]
+            if dp[i] > 0:
+                return dp[i]
 
-            memo[x] = recursion(x + 1) + recursion(x + 2)
+            dp[i] = dfs(i + 1) + dfs(i + 2)
 
-            return memo[x]
+            return dp[i]
 
-        return recursion(0)
+        return dfs(0)
 
     def dp_bottom_up_approach(self, n: int) -> int:
         print("[DP bottom up]")
@@ -46,13 +46,14 @@ class Solution:
         dp = [0] * (n + 1)
         dp[1] = 1
         dp[2] = 2
-        for x in range(3, n + 1):
-            dp[x] = dp[x - 1] + dp[x - 2]
+
+        for i in range(3, n + 1):
+            dp[i] = dp[i - 1] + dp[i - 2]
 
         return dp[n]
 
-    def fibbonaci_number_approach(self, n: int) -> int:
-        print("[Fibbonaci number]")
+    def dp_bottom_up_const_approach(self, n: int) -> int:
+        print("[DP bottom up const space]")
         print("space complexity: O(1)")
         print("time complexity: O(n)")
 
@@ -61,7 +62,7 @@ class Solution:
 
         F_prev = 1
         F_curr = 2
-        for x in range(3, n + 1):
+        for _ in range(3, n + 1):
             F_curr, F_prev = F_prev + F_curr, F_curr
 
         return F_curr
