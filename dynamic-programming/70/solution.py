@@ -19,20 +19,21 @@ class Solution:
         print("space complexity: O(n)")
         print("time complexity: O(n)")
 
-        dp = [0] * (n + 1)
-        dp[1] = 1
-        dp[2] = 2
+        dp = [0] * n
 
         def dfs(i: int) -> int:
-            if i <= 0:
+            if i > n:
                 return 0
+            if i == n:
+                return 1
             if dp[i] > 0:
                 return dp[i]
 
-            dp[i] = dfs(i - 1) + dfs(i - 2)
+            dp[i] = dfs(i + 1) + dfs(i + 2)
+
             return dp[i]
 
-        return dfs(n)
+        return dfs(0)
 
     def dp_bottom_up_approach(self, n: int) -> int:
         print("[DP bottom up]")
