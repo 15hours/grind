@@ -15,7 +15,7 @@ class Solution:
         return dfs(0)
 
     def dp_top_down_approach(self, n: int) -> int:
-        print("[DP top down]")
+        print("[DP top down - memoization]")
         print("space complexity: O(n)")
         print("time complexity: O(n)")
 
@@ -36,7 +36,7 @@ class Solution:
         return dfs(0)
 
     def dp_bottom_up_approach(self, n: int) -> int:
-        print("[DP bottom up]")
+        print("[DP bottom up - tabulation]")
         print("space complexity: O(n)")
         print("time complexity: O(n)")
 
@@ -53,7 +53,7 @@ class Solution:
         return dp[n]
 
     def dp_bottom_up_const_approach(self, n: int) -> int:
-        print("[DP bottom up const space]")
+        print("[DP bottom up - const space]")
         print("space complexity: O(1)")
         print("time complexity: O(n)")
 

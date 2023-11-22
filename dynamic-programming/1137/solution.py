@@ -6,26 +6,26 @@ class Solution:
         print("time complexity: O(3^n)")
 
         def dfs(i: int) -> int:
-            if i > n:
+            if i <= 0:
                 return 0
-            if i == n:
+            if i == 1 or i == 2:
                 return 1
-            return dfs(i - 1) + dfs(i + 2) - dfs(i - 3)
+            return dfs(i - 1) + dfs(i - 2) + dfs(i - 3)
 
         return dfs(n)
 
     def dp_top_down_approach(self, n: int) -> int:
-        print("[DP top down]")
+        print("[DP top down - memoization]")
         print("[space complexity: O(n)]")
         print("[time complexity: O(n)]")
 
         dp = [0] * (n + 1)
+        dp[1] = 1
+        dp[2] = 1
 
         def dfs(i: int):
-            if i < 1:
+            if i <= 0:
                 return 0
-            if i == 1:
-                return 1
             if dp[i] > 0:
                 return dp[i]
 
@@ -35,7 +35,7 @@ class Solution:
         return dfs(n)
 
     def dp_bottom_up_approach(self, n: int) -> int:
-        print("[DP bottom up]")
+        print("[DP bottom up - tabulation]")
         print("[space complexity: O(n)]")
         print("[time complexity: O(n)]")
 
@@ -55,7 +55,7 @@ class Solution:
         return dp[n]
 
     def dp_bottom_up_const_approach(self, n: int) -> int:
-        print("[DP bottom up with constant space]")
+        print("[DP bottom up - const space]")
         print("[space complexity: O(1)]")
         print("[time complexity: O(n)]")
 
