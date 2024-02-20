@@ -5,7 +5,7 @@ import (
 	"strings"
 )
 
-func reverseWords(s string) string {
+func rrverseWords(s string) string {
 	n := len(s)
 	var result string
 	for i := 0; i < n; {
