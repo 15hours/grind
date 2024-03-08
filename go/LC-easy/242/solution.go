@@ -5,28 +5,28 @@ import (
 )
 
 func isAnagram(s string, t string) bool {
-    if len(s) != len(t) || len(s) == 0 || len(t) == 0 {
-        return false
-    }
+	if len(s) != len(t) || len(s) == 0 || len(t) == 0 {
+		return false
+	}
 
-    count := make([]int, 26)
+	count := make([]int, 26)
 
-    for i := 0; i < len(s); i++ {
-        count[int(s[i]) - int('a')]++
-        count[int(t[i]) - int('a')]--
-    }
+	for i := 0; i < len(s); i++ {
+		count[int(s[i])-int('a')]++
+		count[int(t[i])-int('a')]--
+	}
 
-    for _, value := range count {
-        if value != 0 {
-            return false
-        }
-    }
+	for _, value := range count {
+		if value != 0 {
+			return false
+		}
+	}
 
-    return true
+	return true
 }
 
 func main() {
-    s := "a"
-    t := "ab"
-    fmt.Println(isAnagram(s, t))
+	s := "a"
+	t := "ab"
+	fmt.Println(isAnagram(s, t))
 }

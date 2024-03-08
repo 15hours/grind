@@ -17,9 +17,9 @@ func findMaxAverage(nums []int, k int) float64 {
 		}
 	}
 
-    if tmpSum > maxSum {
-        maxSum = tmpSum
-    }
+	if tmpSum > maxSum {
+		maxSum = tmpSum
+	}
 
 	return float64(maxSum) / float64(k)
 }

@@ -11,10 +11,10 @@ func setDifference(a, b []int) []int {
 	}
 
 	for _, num := range a {
-        if _, exists :=setB[num]; !exists {
+		if _, exists := setB[num]; !exists {
 			diffAB = append(diffAB, num)
-            setB[num] = true
-        }
+			setB[num] = true
+		}
 	}
 
 	return diffAB
@@ -25,5 +25,5 @@ func findDifference(nums1 []int, nums2 []int) [][]int {
 }
 
 func main() {
-    fmt.Println(findDifference([]int{1, 2, 3}, []int{2, 4, 6}))
+	fmt.Println(findDifference([]int{1, 2, 3}, []int{2, 4, 6}))
 }

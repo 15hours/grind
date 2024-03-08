@@ -19,9 +19,9 @@ func deleteNode(root *TreeNode, key int) *TreeNode {
 		root.Left = deleteNode(root.Left, key)
 	} else {
 		if root.Left == nil {
-            return root.Right
+			return root.Right
 		} else if root.Right == nil {
-            return root.Left
+			return root.Left
 		} else {
 			successor := subtreeMinimum(root.Right)
 
@@ -31,7 +31,7 @@ func deleteNode(root *TreeNode, key int) *TreeNode {
 			successor.Left = leftSubTree
 			successor.Right = rightSubTree
 
-            return successor
+			return successor
 		}
 	}
 
@@ -39,10 +39,10 @@ func deleteNode(root *TreeNode, key int) *TreeNode {
 }
 
 // time O(h)
-// space O(1) 
+// space O(1)
 func subtreeMinimum(node *TreeNode) *TreeNode {
-    for node.Left != nil {
-        node = node.Left
-    }
-    return node
+	for node.Left != nil {
+		node = node.Left
+	}
+	return node
 }

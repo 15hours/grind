@@ -6,17 +6,17 @@ func isSubsequence(s string, t string) bool {
 	sLength, tLength := len(s), len(t)
 	sPointer, tPointer := 0, 0
 
-    for sPointer < sLength && tPointer < tLength {
+	for sPointer < sLength && tPointer < tLength {
 		if t[tPointer] == s[sPointer] {
-            sPointer++
+			sPointer++
 		}
-        tPointer++
+		tPointer++
 	}
 
-    return sPointer == sLength
+	return sPointer == sLength
 }
 
 func main() {
-    fmt.Println(isSubsequence("abc", "ahbgdc"))
-    fmt.Println(isSubsequence("axc", "ahbgdc"))
+	fmt.Println(isSubsequence("abc", "ahbgdc"))
+	fmt.Println(isSubsequence("axc", "ahbgdc"))
 }

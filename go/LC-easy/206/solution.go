@@ -45,19 +45,19 @@ func recursion(node *ListNode) (head, tail *ListNode) {
 }
 
 func printLinkedList(head *ListNode) {
-    for head != nil {
-        fmt.Print(head.Val, " ")
-        head = head.Next
-    }
-    fmt.Println()
+	for head != nil {
+		fmt.Print(head.Val, " ")
+		head = head.Next
+	}
+	fmt.Println()
 }
 
 func main() {
-    list1 := &ListNode{1, &ListNode{2, &ListNode{3, &ListNode{4, nil}}}}
-    reversed1 := reverseListUsingIterations(list1)
-    printLinkedList(reversed1)
+	list1 := &ListNode{1, &ListNode{2, &ListNode{3, &ListNode{4, nil}}}}
+	reversed1 := reverseListUsingIterations(list1)
+	printLinkedList(reversed1)
 
-    list2 := &ListNode{1, &ListNode{2, &ListNode{3, &ListNode{4, nil}}}}
-    reversed2 := reverseListUsingRecursion(list2)
-    printLinkedList(reversed2)
+	list2 := &ListNode{1, &ListNode{2, &ListNode{3, &ListNode{4, nil}}}}
+	reversed2 := reverseListUsingRecursion(list2)
+	printLinkedList(reversed2)
 }

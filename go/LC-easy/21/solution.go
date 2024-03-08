@@ -42,7 +42,7 @@ func printLinkedList(list *ListNode) {
 		fmt.Print(list.Val, " ")
 		list = list.Next
 	}
-    fmt.Println()
+	fmt.Println()
 }
 
 func main() {

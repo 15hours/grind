@@ -16,12 +16,12 @@ func guessNumber(n, target int) int {
 	l, r := 1, n
 
 	for l != r {
-        m := l + (r-l)/2
-		
+		m := l + (r-l)/2
+
 		if guessResult := guess(m, target); guessResult == 1 {
-			l = m+1
+			l = m + 1
 		} else if guessResult == -1 {
-			r = m-1
+			r = m - 1
 		} else {
 			return m
 		}

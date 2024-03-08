@@ -3,29 +3,29 @@ package main
 import "fmt"
 
 type ListNode struct {
-    Val int
-    Next *ListNode
+	Val  int
+	Next *ListNode
 }
 
 func oddEvenList(head *ListNode) *ListNode {
-    if head == nil || head.Next == nil || head.Next.Next == nil {
-        return head
-    }
+	if head == nil || head.Next == nil || head.Next.Next == nil {
+		return head
+	}
 
-    odd := head
-    even := head.Next
-    evenHead := even
+	odd := head
+	even := head.Next
+	evenHead := even
 
-    for even != nil && even.Next != nil {
-        odd.Next = even.Next
-        odd = odd.Next
-        even.Next = odd.Next
-        even = even.Next
-    }
+	for even != nil && even.Next != nil {
+		odd.Next = even.Next
+		odd = odd.Next
+		even.Next = odd.Next
+		even = even.Next
+	}
 
-    odd.Next = evenHead
+	odd.Next = evenHead
 
-    return head
+	return head
 }
 
 func printLinkedList(l *ListNode) {

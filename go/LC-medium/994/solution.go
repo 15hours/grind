@@ -10,16 +10,16 @@ func orangesRotting(grid [][]int) int {
 
 	numRows := len(grid)
 	numCols := len(grid[0])
-    countFresh := 0
+	countFresh := 0
 	for i := 0; i < numRows; i++ {
 		for j := 0; j < numCols; j++ {
 			if grid[i][j] == Rotten {
 				queue = append(queue, []int{i, j})
 			}
 
-            if grid[i][j] == Fresh {
-                countFresh++
-            }
+			if grid[i][j] == Fresh {
+				countFresh++
+			}
 		}
 	}
 
@@ -46,19 +46,19 @@ func orangesRotting(grid [][]int) int {
 					continue
 				}
 
-                queue = append(queue, []int{di, dj})
-                grid[di][dj] = Rotten
-                countFresh--
+				queue = append(queue, []int{di, dj})
+				grid[di][dj] = Rotten
+				countFresh--
 			}
 		}
 
-        if len(queue) != 0 {
-            levels++
-        }
+		if len(queue) != 0 {
+			levels++
+		}
 	}
 
-    if countFresh != 0 {
-        return -1
-    }
-    return levels
+	if countFresh != 0 {
+		return -1
+	}
+	return levels
 }

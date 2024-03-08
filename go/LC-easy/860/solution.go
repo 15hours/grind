@@ -15,10 +15,10 @@ func lemonadeChange(bills []int) bool {
 			}
 			countTens++
 		} else if bill == 20 {
-            if countTens >= 1 && countFives >= 1 {
-                countTens--
-                countFives--
-            } else if countFives >= 3 {
+			if countTens >= 1 && countFives >= 1 {
+				countTens--
+				countFives--
+			} else if countFives >= 3 {
 				countFives -= 3
 			} else {
 				return false

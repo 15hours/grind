@@ -38,7 +38,7 @@ func singleNumberUsingSorting(nums []int) int {
 func singleNumberUsingXOR(nums []int) int {
 	xorResult := 0
 
-    for _, num := range nums {
+	for _, num := range nums {
 		xorResult ^= num
 	}
 

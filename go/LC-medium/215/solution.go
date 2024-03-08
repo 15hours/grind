@@ -4,6 +4,7 @@ import (
 	"container/heap"
 	"fmt"
 	"math"
+	"math/rand"
 	"slices"
 )
 
@@ -66,21 +67,55 @@ func (pq *PriorityQueue) Pop() interface{} {
 // time O(n * log k)
 // space O(k)
 func findKthLargestPriorityQueueApproach(nums []int, k int) int {
-    pq := PriorityQueue(nums[:k])
-    heap.Init(&pq)
+	pq := PriorityQueue(nums[:k])
+	heap.Init(&pq)
 
-    for _, num := range nums[k:] {
-        if num > pq[0] {
-            heap.Pop(&pq)
-            heap.Push(&pq, num)
-        }
-    }
+	for _, num := range nums[k:] {
+		if num > pq[0] {
+			heap.Pop(&pq)
+			heap.Push(&pq, num)
+		}
+	}
 
-    return pq[0]
+	return pq[0]
+}
+
+func partition(list []int, left, right, pivotIdx int) int {
+	pivotVal := list[pivotIdx]
+	list[pivotIdx], list[right] = list[right], list[pivotIdx]
+	storeIdx := left
+
+	for i := left; i < right; i++ {
+		if list[i] < pivotVal {
+			list[storeIdx], list[i] = list[i], list[storeIdx]
+			storeIdx++
+		}
+	}
+
+	list[right], list[storeIdx] = list[storeIdx], list[right]
+	return storeIdx
+}
+
+func quickSelect(list []int, left, right, k int) int {
+	if left == right {
+		return list[left]
+	}
+	pivotIdx := left + rand.Intn(right-left+1)
+	newPivotIdx := partition(list, left, right, pivotIdx)
+
+	if newPivotIdx > k {
+		quickSelect(list, left, newPivotIdx-1, k)
+	} else if newPivotIdx < k {
+		quickSelect(list, newPivotIdx+1, right, k)
+	}
+
+	return list[k]
 }
 
 func findKthLargestQuickSelectApproach(nums []int, k int) int {
-
+	n := len(nums)
+	left, right := 0, n-1
+	return quickSelect(nums, left, right, n-k)
 }
 
 func main() {

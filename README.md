@@ -1,2 +1,2 @@
-# Gym
+# Overview
 Solving some problems for fun.

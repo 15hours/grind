@@ -6,9 +6,9 @@ import (
 )
 
 func isVowel(char rune) bool {
-    c := unicode.ToLower(char)
+	c := unicode.ToLower(char)
 	return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u' ||
-        c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
+		c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U'
 }
 
 func reverseVowels(s string) string {
@@ -23,8 +23,8 @@ func reverseVowels(s string) string {
 			r--
 		}
 		sSlice[l], sSlice[r] = sSlice[r], sSlice[l]
-        l++
-        r--
+		l++
+		r--
 	}
 
 	return string(sSlice)

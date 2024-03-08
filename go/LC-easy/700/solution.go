@@ -80,23 +80,23 @@ func bfsApproach2(root *TreeNode, val int) *TreeNode {
 }
 
 func dfsTraverse(node *TreeNode, val int) *TreeNode {
-    if node == nil {
-        return nil
-    }
+	if node == nil {
+		return nil
+	}
 
-    if node.Val == val {
-        return node
-    }
+	if node.Val == val {
+		return node
+	}
 
-    var nextNode *TreeNode
-    if node.Val > val {
-        nextNode = dfsTraverse(node.Left, val)
-    }
-    if node.Val < val {
-        nextNode = dfsTraverse(node.Right, val)
-    }
+	var nextNode *TreeNode
+	if node.Val > val {
+		nextNode = dfsTraverse(node.Left, val)
+	}
+	if node.Val < val {
+		nextNode = dfsTraverse(node.Right, val)
+	}
 
-    return nextNode
+	return nextNode
 }
 
 func main() {

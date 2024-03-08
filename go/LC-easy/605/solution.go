@@ -7,9 +7,9 @@ func canPlaceFlowers(flowerbed []int, n int) bool {
 	flowerbedLength := len(flowerbed)
 
 	for i, plot := range flowerbed {
-        if flowersLeft == 0 {
-            return true
-        }
+		if flowersLeft == 0 {
+			return true
+		}
 
 		if plot == 1 {
 			continue
@@ -17,7 +17,7 @@ func canPlaceFlowers(flowerbed []int, n int) bool {
 
 		if (i == 0 || flowerbed[i-1] == 0) &&
 			(i == flowerbedLength-1 || flowerbed[i+1] == 0) {
-            flowerbed[i] = 1
+			flowerbed[i] = 1
 			flowersLeft--
 		}
 	}
