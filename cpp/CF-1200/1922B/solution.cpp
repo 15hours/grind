@@ -1,31 +1,26 @@
-#include <algorithm>
-#include <cmath>
 #include <iostream>
 #include <vector>
 
 void solve() {
     int n; std::cin >> n;
-    std::vector<long long> a(n);
+    std::vector<long long> cnt(n + 1);
     for (int i = 0; i < n; i++) {
-        std::cin >> a[i];
-        a[i] = pow(2, a[i]);
+        int x; std::cin >> x;
+        cnt[x]++;
     }
 
-    std::sort(a.begin(), a.end());
-
-    int count = 0;
-    for (int i = 0; i < n - 2; i++) {
-        for (int j = i + 1; j < n - 1; j++) {
-            for (int k = j + 1; k < n; k++) {
-                if (a[i] + a[j] <= a[k]) {
-                    break;
-                }
-                count++;
-            }
+    long long counter = 0;
+    int dp = 0;
+    for (int i = 0; i < n + 1; i++) {
+        if (cnt[i] == 0) {
+            continue;
         }
+        counter += 1LL * cnt[i] * (cnt[i] - 1) * (cnt[i] - 2) / 6;
+        counter += 1LL * cnt[i] * (cnt[i] - 1) * dp / 2;
+        dp += cnt[i];
     }
 
-    std::cout << count << '\n';
+    std::cout << counter << '\n';
 }
 
 int main() {

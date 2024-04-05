@@ -38,6 +38,10 @@ func letterCombinations(digits string) []string {
 }
 
 func letterCombinationsBacktracking(digits string) []string {
+	if len(digits) == 0 {
+		return []string{}
+	}
+
 	letters := map[byte][]string{
 		'2': {"a", "b", "c"},
 		'3': {"d", "e", "f"},
@@ -49,4 +53,20 @@ func letterCombinationsBacktracking(digits string) []string {
 		'9': {"w", "x", "y", "z"},
 	}
 
+    var combinations []string
+
+    var backtrack func(comb string, nextDigits string)
+    backtrack = func(comb string, nextDigits string) {
+        if nextDigits == "" {
+            combinations = append(combinations, comb)
+            return
+        }
+
+        for _, letter := range letters[nextDigits[0]] {
+            backtrack(comb + string(letter), nextDigits[1:])
+        }
+    }
+
+    backtrack("", digits)
+    return combinations
 }
