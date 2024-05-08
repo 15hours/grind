@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Check if the number of command-line arguments is correct
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <folder_path>"
+    exit 1
+fi
+
+# Assign the folder path provided as the first argument
+folder_path=$1
+
+# Check if the provided folder exists
+if [ ! -d "$folder_path" ]; then
+    echo "Error: Folder '$folder_path' not found"
+    exit 1
+fi
+
+test_cases=$(ls "$folder_path"/tcs/ | sort -n)
+
+for test_case in $test_cases; do
+    if [[ $test_case != *.a ]]; then
+        test_number=$(basename $test_case)
+
+        # Measure the execution time of the solution
+        start_time=$(date +%s%N)
+        output=$(go run "$folder_path/solution.go" < "$folder_path/tcs/$test_case")
+        end_time=$(date +%s%N)
+        execution_time=$(( ($end_time - $start_time) / 1000000 ))  # Convert nanoseconds to milliseconds
+
+        # Compare the output with the expected output
+        expected_output="${test_number}.a"
+        diff_output=$(diff -u "$folder_path/tcs/$expected_output" <(echo "$output"))
+
+        if [ $? -eq 0 ]; then
+            echo "${execution_time}ms - Test case $test_number: PASSED"
+        else
+            echo "${execution_time}ms - Test case $test_number: FAILED"
+            echo "$diff_output" | nvim -R -
+            break
+        fi
+    fi
+done
